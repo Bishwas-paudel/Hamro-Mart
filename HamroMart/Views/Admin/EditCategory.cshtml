@@ -1,0 +1,115 @@
+﻿@model HamroMart.Models.Category
+@{
+    ViewData["Title"] = "Edit Category";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-edit me-2"></i>Edit Category</h1>
+        <a href="@Url.Action("Categories")" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Categories
+        </a>
+    </div>
+
+    <!-- Error Message -->
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="card-title mb-0"><i class="fas fa-edit me-2"></i>Edit Category</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="EditCategory" method="post" id="editCategoryForm">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Name" class="form-label">Category Name *</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Enter category name" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="ImageUrl" class="form-label">Image URL</label>
+                                    <input asp-for="ImageUrl" class="form-control" placeholder="https://example.com/image.jpg" />
+                                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                    <small class="form-text text-muted">Optional: URL for category image</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter category description (optional)"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <!-- Current Image Preview -->
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <div class="mb-3">
+                                <label class="form-label">Current Image</label>
+                                <div>
+                                    <img src="@Model.ImageUrl" alt="@Model.Name"
+                                         class="img-thumbnail" style="max-height: 150px; max-width: 150px; object-fit: cover;"
+                                         onerror="this.src='/images/placeholder.jpg'">
+                                    <small class="form-text text-muted d-block mt-1">Current category image</small>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-check form-switch mb-4">
+                            <input asp-for="IsActive" class="form-check-input" role="switch" />
+                            <label asp-for="IsActive" class="form-check-label">Active Category</label>
+                            <small class="form-text text-muted d-block">Inactive categories won't be visible to customers</small>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fas fa-save me-2"></i>Update Category
+                            </button>
+                            <a href="@Url.Action("Categories")" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            // Client-side validation
+            $('#editCategoryForm').on('subm it', function(e) {
+                const name = $('#Name').val().trim();
+                if (name === '') {
+                    e.preventDefault();
+                    alert('Please enter a category name');
+                    $('#Name').focus();
+                    return false;
+                }
+                return true;
+                });
+
+                    // Clear error message when user starts typing
+                    $('#Name').on('input', function() {
+                        $(this).removeClass('is-invalid');
+                    });
+                });
+    </script>
+}

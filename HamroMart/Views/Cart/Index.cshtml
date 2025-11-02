@@ -1,0 +1,250 @@
+﻿@model HamroMart.ViewModels.CartViewModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="breadcrumb-item active">Shopping Cart</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4"><i class="fas fa-shopping-cart me-2"></i>Shopping Cart</h2>
+        </div>
+    </div>
+
+    @if (Model.Items.Any())
+    {
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">Cart Items (@Model.TotalItems items)</h5>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var item in Model.Items)
+                        {
+                            <div class="cart-item row align-items-center mb-4 pb-4 border-bottom">
+                                <div class="col-md-2">
+                                    <img src="@item.ImageUrl" alt="@item.ProductName"
+                                         class="img-fluid rounded" style="max-height: 80px; object-fit: cover;"
+                                         onerror="this.src='/images/placeholder.jpg'">
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="mb-1">@item.ProductName</h6>
+                                    <small class="text-muted">@item.Unit</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="fw-bold text-success">Rs. @item.Price.ToString("N2")</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="input-group input-group-sm">
+                                        <button class="btn btn-outline-secondary decrease-quantity"
+                                                type="button" data-item-id="@item.Id">
+                                            -
+                                        </button>
+                                        <input type="number" class="form-control text-center quantity-input"
+                                               value="@item.Quantity" min="1" max="@item.StockQuantity"
+                                               data-item-id="@item.Id" data-price="@item.Price">
+                                        <button class="btn btn-outline-secondary increase-quantity"
+                                                type="button" data-item-id="@item.Id">
+                                            +
+                                        </button>
+                                    </div>
+                                    <small class="text-muted">Max: @item.StockQuantity</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="text-end">
+                                        <span class="fw-bold item-total">Rs. @item.TotalPrice.ToString("N2")</span>
+                                        <br>
+                                        <button class="btn btn-sm btn-outline-danger remove-item mt-1"
+                                                data-item-id="@item.Id">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline-secondary" id="clear-cart">
+                            <i class="fas fa-trash me-2"></i>Clear Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Items (@Model.TotalItems):</span>
+                            <span>Rs. @Model.TotalAmount.ToString("N2")</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Delivery Fee:</span>
+                            <span>Rs. 50.00</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+                            <span>Total:</span>
+                            <span class="text-success">Rs. @((Model.TotalAmount + 50).ToString("N2"))</span>
+                        </div>
+                        <div class="d-grid">
+                            <a href="@Url.Action("Checkout", "Orders")" class="btn btn-success btn-lg">
+                                <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mt-4">
+                    <div class="card-body">
+                        <h6 class="card-title"><i class="fas fa-shield-alt me-2 text-success"></i>Secure Checkout</h6>
+                        <p class="small text-muted mb-0">Your payment information is secure and encrypted.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm text-center py-5">
+                    <div class="card-body">
+                        <i class="fas fa-shopping-cart fa-4x text-muted mb-4"></i>
+                        <h3 class="text-muted">Your cart is empty</h3>
+                        <p class="text-muted mb-4">Add some products to your cart to get started.</p>
+                        <a href="@Url.Action("Index", "Products")" class="btn btn-success btn-lg">
+                            <i class="fas fa-shopping-bag me-2"></i>Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Update quantity
+            $('.quantity-input').on('change', function () {
+                const itemId = $(this).data('item-id');
+                const quantity = parseInt($(this).val());
+                updateCartItem(itemId, quantity);
+            });
+
+            // Increase quantity
+            $('.increase-quantity').on('click', function () {
+                const itemId = $(this).data('item-id');
+                const input = $(`input[data-item-id="${itemId}"]`);
+                const currentVal = parseInt(input.val());
+                const max = parseInt(input.attr('max'));
+
+                if (currentVal < max) {
+                    input.val(currentVal + 1);
+                    updateCartItem(itemId, currentVal + 1);
+                }
+            });
+
+            // Decrease quantity
+            $('.decrease-quantity').on('click', function () {
+                const itemId = $(this).data('item-id');
+                const input = $(`input[data-item-id="${itemId}"]`);
+                const currentVal = parseInt(input.val());
+
+                if (currentVal > 1) {
+                    input.val(currentVal - 1);
+                    updateCartItem(itemId, currentVal - 1);
+                }
+            });
+
+            // Remove item
+            $('.remove-item').on('click', function () {
+                const itemId = $(this).data('item-id');
+                if (confirm('Are you sure you want to remove this item from your cart?')) {
+                    removeCartItem(itemId);
+                }
+            });
+
+            // Clear cart
+            $('#clear-cart').on('click', function () {
+                if (confirm('Are you sure you want to clear your entire cart?')) {
+                    clearCart();
+                }
+            });
+
+            function updateCartItem(itemId, quantity) {
+                $.post('@Url.Action("Update", "Cart")', { cartItemId: itemId, quantity: quantity })
+                    .done(function (response) {
+                        if (response.success) {
+                            // Update item total
+                            $(`input[data-item-id="${itemId}"]`).closest('.cart-item').find('.item-total')
+                                .text('Rs. ' + response.itemTotal);
+
+                            // Update cart summary
+                            updateCartSummary(response.totalAmount, response.totalItems);
+                            updateCartCount(response.totalItems);
+                        } else {
+                            alert(response.message);
+                            location.reload(); // Reload to sync with server state
+                        }
+                    })
+                    .fail(function () {
+                        alert('Error updating cart item.');
+                    });
+            }
+
+            function removeCartItem(itemId) {
+                $.post('@Url.Action("Remove", "Cart")', { cartItemId: itemId })
+                    .done(function (response) {
+                        if (response.success) {
+                            $(`[data-item-id="${itemId}"]`).closest('.cart-item').remove();
+                            updateCartCount(response.cartCount);
+                            location.reload(); // Reload to update totals
+                        } else {
+                            alert('Error removing item from cart.');
+                        }
+                    })
+                    .fail(function () {
+                        alert('Error removing item from cart.');
+                    });
+            }
+
+            function clearCart() {
+                $.post('@Url.Action("Clear", "Cart")')
+                    .done(function (response) {
+                        if (response.success) {
+                            location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    })
+                    .fail(function () {
+                        alert('Error clearing cart.');
+                    });
+            }
+
+            function updateCartSummary(totalAmount, totalItems) {
+                $('.card-title').text('Cart Items (' + totalItems + ' items)');
+                $('.fw-bold.fs-5 .text-success').text('Rs. ' + (parseFloat(totalAmount) + 50).toFixed(2));
+            }
+
+            function updateCartCount(count) {
+                $('.cart-count').text(count);
+            }
+        });
+    </script>
+}

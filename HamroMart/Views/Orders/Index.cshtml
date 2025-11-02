@@ -1,0 +1,130 @@
+﻿@model IEnumerable<HamroMart.ViewModels.OrderViewModel>
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="breadcrumb-item active">My Orders</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4"><i class="fas fa-shopping-bag me-2"></i>My Orders</h2>
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th>Order #</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Payment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@order.OrderNumber</strong>
+                                            </td>
+                                            <td>@order.OrderDate.ToString("MMM dd, yyyy")</td>
+                                            <td>Rs. @order.TotalAmount.ToString("N2")</td>
+                                            <td>
+                                                <span class="badge @GetStatusBadgeClass(order.OrderStatus)">
+                                                    @order.OrderStatus
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="badge @GetPaymentBadgeClass(order.PaymentStatus)">
+                                                    @order.PaymentStatus
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Details", new { id = order.Id })"
+                                                   class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye me-1"></i>View
+                                                </a>
+                                                @if (order.OrderStatus == "Pending" || order.OrderStatus == "Processing")
+                                                {
+                                                    <form asp-action="Cancel" method="post" class="d-inline">
+                                                        <input type="hidden" name="id" value="@order.Id" />
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                                onclick="return confirm('Are you sure you want to cancel this order?')">
+                                                            <i class="fas fa-times me-1"></i>Cancel
+                                                        </button>
+                                                    </form>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm text-center py-5">
+                    <div class="card-body">
+                        <i class="fas fa-shopping-bag fa-4x text-muted mb-4"></i>
+                        <h3 class="text-muted">No Orders Yet</h3>
+                        <p class="text-muted mb-4">You haven't placed any orders yet.</p>
+                        <a href="@Url.Action("Index", "Products")" class="btn btn-success btn-lg">
+                            <i class="fas fa-shopping-bag me-2"></i>Start Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@functions {
+    public string GetStatusBadgeClass(string status)
+    {
+        return status.ToLower() switch
+        {
+            "pending" => "bg-warning",
+            "processing" => "bg-info",
+            "shipped" => "bg-primary",
+            "delivered" => "bg-success",
+            "cancelled" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+
+    public string GetPaymentBadgeClass(string status)
+    {
+        return status.ToLower() switch
+        {
+            "completed" => "bg-success",
+            "pending" => "bg-warning",
+            "failed" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}

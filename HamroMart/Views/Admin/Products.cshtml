@@ -1,0 +1,137 @@
+﻿@model IEnumerable<HamroMart.Models.Product>
+@{
+    ViewData["Title"] = "Manage Products";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-cubes me-2"></i>Manage Products</h1>
+        <a href="@Url.Action("Create", "Products")" class="btn btn-success">
+            <i class="fas fa-plus me-2"></i>Add New Product
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Search and Filter -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-8">
+                    <input type="text" name="search" class="form-control" placeholder="Search products..." value="@ViewBag.SearchTerm">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@product.ImageUrl" alt="@product.Name"
+                                         class="rounded" style="width: 50px; height: 50px; object-fit: cover;"
+                                         onerror="this.src='/images/placeholder.jpg'">
+                                </td>
+                                <td>
+                                    <strong>@product.Name</strong>
+                                    <br>
+                                    <small class="text-muted">@product.Brand • @product.Unit</small>
+                                </td>
+                                <td>@product.Category?.Name</td>
+                                <td>
+                                    @if (product.DiscountPrice.HasValue)
+                                    {
+                                        <span class="text-danger fw-bold">Rs. @product.DiscountPrice.Value.ToString("N2")</span>
+                                        <br>
+                                        <small class="text-muted text-decoration-line-through">Rs. @product.Price.ToString("N2")</small>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-success fw-bold">Rs. @product.Price.ToString("N2")</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="@(product.StockQuantity > 10 ? "text-success" : product.StockQuantity > 0 ? "text-warning" : "text-danger")">
+                                        @product.StockQuantity
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (product.IsActive)
+                                    {
+                                        <span class="badge bg-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Inactive</span>
+                                    }
+                                </td>
+                                <td>@product.CreatedAt.ToString("MMM dd, yyyy")</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="@Url.Action("Details", "Products", new { id = product.Id })"
+                                           class="btn btn-outline-primary" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="@Url.Action("Edit", "Products", new { id = product.Id })"
+                                           class="btn btn-outline-warning" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form asp-action="Delete" asp-controller="Products" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@product.Id" />
+                                            <button type="submit" class="btn btn-outline-danger" title="Delete"
+                                                    onclick="return confirm('Are you sure you want to delete this product?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            @if (ViewBag.TotalPages > 1)
+            {
+                <nav aria-label="Product pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Products", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</div>

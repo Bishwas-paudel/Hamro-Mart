@@ -1,0 +1,170 @@
+﻿@model HamroMart.Models.Order
+@{
+    ViewData["Title"] = "Order Details";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-file-invoice me-2"></i>Order Details - @Model.OrderNumber</h1>
+        <a href="@Url.Action("Orders")" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Orders
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Order Items -->
+            <div class="card shadow mb-4">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-primary">Order Items</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderItems)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@item.Product.ImageUrl" alt="@item.Product.Name"
+                                                     class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;"
+                                                     onerror="this.src='/images/placeholder.jpg'">
+                                                <div>
+                                                    <strong>@item.Product.Name</strong>
+                                                    <br>
+                                                    <small class="text-muted">@item.Product.Brand</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Rs. @item.UnitPrice.ToString("N2")</td>
+                                        <td>@item.Quantity</td>
+                                        <td>Rs. @item.TotalPrice.ToString("N2")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Total Amount:</strong></td>
+                                    <td><strong>Rs. @Model.TotalAmount.ToString("N2")</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Order Information -->
+            <div class="card shadow mb-4">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-primary">Order Information</h6>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-5">Order Number:</dt>
+                        <dd class="col-sm-7">@Model.OrderNumber</dd>
+
+                        <dt class="col-sm-5">Order Date:</dt>
+                        <dd class="col-sm-7">@Model.OrderDate.ToString("MMM dd, yyyy hh:mm tt")</dd>
+
+                        <dt class="col-sm-5">Payment Method:</dt>
+                        <dd class="col-sm-7">@Model.PaymentMethod</dd>
+
+                        <dt class="col-sm-5">Payment Status:</dt>
+                        <dd class="col-sm-7">
+                            <span class="badge @(Model.PaymentStatus == PaymentStatus.Completed ? "bg-success" : "bg-warning")">
+                                @Model.PaymentStatus
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-5">Order Status:</dt>
+                        <dd class="col-sm-7">
+                            <span class="badge @GetStatusBadgeClass(Model.OrderStatus.ToString())">
+                                @Model.OrderStatus
+                            </span>
+                        </dd>
+
+                        @if (Model.ShippedDate.HasValue)
+                        {
+                            <dt class="col-sm-5">Shipped Date:</dt>
+                            <dd class="col-sm-7">@Model.ShippedDate.Value.ToString("MMM dd, yyyy")</dd>
+                        }
+
+                        @if (Model.DeliveredDate.HasValue)
+                        {
+                            <dt class="col-sm-5">Delivered Date:</dt>
+                            <dd class="col-sm-7">@Model.DeliveredDate.Value.ToString("MMM dd, yyyy")</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Customer Information -->
+            <div class="card shadow mb-4">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-primary">Customer Information</h6>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-5">Name:</dt>
+                        <dd class="col-sm-7">@Model.User.FirstName @Model.User.LastName</dd>
+
+                        <dt class="col-sm-5">Email:</dt>
+                        <dd class="col-sm-7">@Model.User.Email</dd>
+
+                        <dt class="col-sm-5">Phone:</dt>
+                        <dd class="col-sm-7">@Model.PhoneNumber</dd>
+
+                        <dt class="col-sm-5">Address:</dt>
+                        <dd class="col-sm-7">@Model.ShippingAddress, @Model.City, @Model.PostalCode</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Update Status -->
+            <div class="card shadow">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-primary">Update Status</h6>
+                </div>
+                <div class="card-body">
+                    @foreach (var status in Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>())
+                    {
+                        <form asp-action="UpdateOrderStatus" method="post" class="mb-2">
+                            <input type="hidden" name="orderId" value="@Model.Id" />
+                            <input type="hidden" name="status" value="@status" />
+                            <button type="submit" class="btn btn-outline-primary btn-sm w-100">
+                                Mark as @status
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetStatusBadgeClass(string status)
+    {
+        return status.ToLower() switch
+        {
+            "pending" => "bg-warning",
+            "processing" => "bg-info",
+            "shipped" => "bg-primary",
+            "delivered" => "bg-success",
+            "cancelled" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}

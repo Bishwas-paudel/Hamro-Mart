@@ -1,0 +1,87 @@
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom Colors */
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Navigation */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Product Cards */
+.product-card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.product-image {
+    border-radius: 10px 10px 0 0;
+}
+
+/* Category Cards */
+.category-card .card {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .card {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .hero-section {
+        margin-top: -1rem;
+    }
+}
+
+/* Loading states */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+    .btn-loading:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        border-right-color: transparent;
+        animation: spin 1s linear infinite;
+    }
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

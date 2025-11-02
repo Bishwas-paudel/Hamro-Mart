@@ -1,0 +1,602 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\HamroMart\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\admin\\createcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\admin\\createcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\hamromart.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\hamromart.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\khaltisettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\khaltisettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\orders\\khaltipayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\orders\\khaltipayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\account\\verifyotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\account\\verifyotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\viewmodels\\verifyotpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\viewmodels\\verifyotpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\otpverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\otpverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\services\\khaltiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\services\\khaltiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\orders\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\orders\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\orders\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\orders\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\admin\\editcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\admin\\editcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|c:\\users\\user\\source\\repos\\hamromart\\hamromart\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EEE5F0-CCAC-4137-8E3D-FA31E751DDE2}|HamroMart\\HamroMart.csproj|solutionrelative:hamromart\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAiwBgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:05:27.661Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:702410070:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HamroMart.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\HamroMart.csproj",
+              "RelativeDocumentMoniker": "HamroMart\\HamroMart.csproj",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\HamroMart.csproj",
+              "RelativeToolTip": "HamroMart\\HamroMart.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-16T16:00:03.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Program.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Program.cs",
+              "RelativeToolTip": "HamroMart\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:59:44.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "KhaltiPayment.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\KhaltiPayment.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Orders\\KhaltiPayment.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\KhaltiPayment.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Orders\\KhaltiPayment.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T15:55:01.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VerifyOTP.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Account\\VerifyOTP.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Account\\VerifyOTP.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Account\\VerifyOTP.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Account\\VerifyOTP.cshtml",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAkwHkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T15:53:49.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "VerifyOTPViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\ViewModels\\VerifyOTPViewModel.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\ViewModels\\VerifyOTPViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\ViewModels\\VerifyOTPViewModel.cs",
+              "RelativeToolTip": "HamroMart\\Models\\ViewModels\\VerifyOTPViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:53:16.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAP4AAAAAAAAAAAAowAsBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:53:00.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "HamroMart\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:52:52.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "HamroMart\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:17:23.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OTPVerification.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\OTPVerification.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\OTPVerification.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\OTPVerification.cs",
+              "RelativeToolTip": "HamroMart\\Models\\OTPVerification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:51:31.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Services\\EmailService.cs",
+              "RelativeToolTip": "HamroMart\\Services\\EmailService.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwFgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:51:05.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "KhaltiService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Services\\KhaltiService.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Services\\KhaltiService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Services\\KhaltiService.cs",
+              "RelativeToolTip": "HamroMart\\Services\\KhaltiService.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAkwGwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:50:36.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "KhaltiSettings.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\KhaltiSettings.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\KhaltiSettings.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\KhaltiSettings.cs",
+              "RelativeToolTip": "HamroMart\\Models\\KhaltiSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:49:26.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EmailSettings.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\EmailSettings.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\EmailSettings.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\EmailSettings.cs",
+              "RelativeToolTip": "HamroMart\\Models\\EmailSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T15:49:05.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\appsettings.json",
+              "RelativeDocumentMoniker": "HamroMart\\appsettings.json",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\appsettings.json",
+              "RelativeToolTip": "HamroMart\\appsettings.json",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAwBEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-16T15:46:16.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "HamroMart\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\appsettings.Development.json",
+              "RelativeToolTip": "HamroMart\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-16T15:46:15.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAwwEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T15:02:15.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Products\\Details.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Products\\Details.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Products\\Details.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Products\\Details.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAF8AAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:57:00.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Products\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAANcAAAAAAAAAAAAgwOoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:56:44.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAwwKoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:55:45.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Orders\\Checkout.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\Checkout.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Orders\\Checkout.cshtml",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAYwKgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:55:22.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\Details.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Orders\\Details.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\Details.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Orders\\Details.cshtml",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAYwKIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:52:50.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\Index.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Orders\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Orders\\Index.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Orders\\Index.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAYwIEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:51:39.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Cart\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAANsAAAAAAAAAAAAYwPkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T14:51:16.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\PaymentController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAIwEIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T14:50:44.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAF0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T14:50:09.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T14:50:06.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\CartController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAwwOMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T14:47:31.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "EditCategory.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Admin\\EditCategory.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Admin\\EditCategory.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Admin\\EditCategory.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Admin\\EditCategory.cshtml",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAGoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-15T17:07:02.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateCategory.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Admin\\CreateCategory.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Admin\\CreateCategory.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Admin\\CreateCategory.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Admin\\CreateCategory.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-15T17:06:22.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "HamroMart\\Views\\Admin\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeToolTip": "HamroMart\\Views\\Admin\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-15T17:06:21.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "HamroMart\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T17:05:14.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Data\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Data\\DbInitializer.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Data\\DbInitializer.cs",
+              "RelativeToolTip": "HamroMart\\Data\\DbInitializer.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACoAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T17:00:45.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Models\\Category.cs",
+              "RelativeToolTip": "HamroMart\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T16:54:03.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "HamroMart\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HamroMart\\HamroMart\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "HamroMart\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAABIBAAAAAAAAAAAAACsBAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T16:53:30.35Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

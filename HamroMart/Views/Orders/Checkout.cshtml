@@ -1,0 +1,169 @@
+﻿@model HamroMart.ViewModels.CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    var cartItems = ViewBag.CartItems as List<CartItem>;
+    var totalAmount = (decimal)ViewBag.TotalAmount;
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Cart")">Cart</a></li>
+                    <li class="breadcrumb-item active">Checkout</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4"><i class="fas fa-credit-card me-2"></i>Checkout</h2>
+        </div>
+    </div>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <form asp-action="Checkout" method="post" id="checkout-form">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0"><i class="fas fa-truck me-2"></i>Shipping Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="ShippingAddress" class="form-label">Address *</label>
+                                    <input asp-for="ShippingAddress" class="form-control" required />
+                                    <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="City" class="form-label">City *</label>
+                                    <input asp-for="City" class="form-control" required />
+                                    <span asp-validation-for="City" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="PostalCode" class="form-label">Postal Code</label>
+                                    <input asp-for="PostalCode" class="form-control" />
+                                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="form-label">Phone Number *</label>
+                                    <input asp-for="PhoneNumber" class="form-control" required />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0"><i class="fas fa-credit-card me-2"></i>Payment Method</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" asp-for="PaymentMethod" value="CashOnDelivery" checked>
+                            <label class="form-check-label fw-bold">
+                                <i class="fas fa-money-bill-wave me-2"></i>Cash on Delivery
+                            </label>
+                            <small class="form-text text-muted d-block">Pay when you receive your order</small>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" asp-for="PaymentMethod" value="Khalti">
+                            <label class="form-check-label fw-bold">
+                                <i class="fas fa-mobile-alt me-2"></i>Khalti
+                            </label>
+                            <small class="form-text text-muted d-block">Pay securely with Khalti</small>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" asp-for="PaymentMethod" value="Esewa">
+                            <label class="form-check-label fw-bold">
+                                <i class="fas fa-wallet me-2"></i>eSewa
+                            </label>
+                            <small class="form-text text-muted d-block">Pay with your eSewa wallet</small>
+                        </div>
+                        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6>Items (@cartItems.Count):</h6>
+                            @foreach (var item in cartItems)
+                            {
+                                <div class="d-flex justify-content-between small mb-2">
+                                    <span>@item.Product.Name x @item.Quantity</span>
+                                    <span>Rs. @((item.Quantity * (item.Product.DiscountPrice ?? item.Product.Price)).ToString("N2"))</span>
+                                </div>
+                            }
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal:</span>
+                            <span>Rs. @totalAmount.ToString("N2")</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Delivery Fee:</span>
+                            <span>Rs. 50.00</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+                            <span>Total:</span>
+                            <span class="text-success">Rs. @((totalAmount + 50).ToString("N2"))</span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-lock me-2"></i>Place Order
+                            </button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                <i class="fas fa-shield-alt me-1"></i>Your payment information is secure
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function() {
+            $('#checkout-form').on('submit', function() {
+                // Show loading state
+                $('button[type="submit"]').html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...').prop('disabled', true);
+            });
+        });
+    </script>
+}

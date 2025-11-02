@@ -1,0 +1,163 @@
+﻿@model HamroMart.ViewModels.OrderViewModel
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Orders")">My Orders</a></li>
+                    <li class="breadcrumb-item active">Order @Model.OrderNumber</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="fas fa-file-invoice me-2"></i>Order @Model.OrderNumber</h2>
+                <div>
+                    @if (Model.OrderStatus == "Pending" || Model.OrderStatus == "Processing")
+                    {
+                        <form asp-action="Cancel" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-outline-danger"
+                                    onclick="return confirm('Are you sure you want to cancel this order?')">
+                                <i class="fas fa-times me-1"></i>Cancel Order
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Order Items</h5>
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <div class="row align-items-center mb-3 pb-3 border-bottom">
+                            <div class="col-md-2">
+                                <img src="@item.ImageUrl" alt="@item.ProductName"
+                                     class="img-fluid rounded" style="max-height: 60px; object-fit: cover;"
+                                     onerror="this.src='/images/placeholder.jpg'">
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="mb-1">@item.ProductName</h6>
+                                <small class="text-muted">@item.Unit</small>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="text-muted">Qty: @item.Quantity</span>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="fw-bold">Rs. @item.UnitPrice.ToString("N2")</span>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <span class="fw-bold text-success">Rs. @item.TotalPrice.ToString("N2")</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">Order Summary</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-6">Order Number:</dt>
+                        <dd class="col-sm-6">@Model.OrderNumber</dd>
+
+                        <dt class="col-sm-6">Order Date:</dt>
+                        <dd class="col-sm-6">@Model.OrderDate.ToString("MMM dd, yyyy")</dd>
+
+                        <dt class="col-sm-6">Order Status:</dt>
+                        <dd class="col-sm-6">
+                            <span class="badge @GetStatusBadgeClass(Model.OrderStatus)">
+                                @Model.OrderStatus
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-6">Payment Status:</dt>
+                        <dd class="col-sm-6">
+                            <span class="badge @GetPaymentBadgeClass(Model.PaymentStatus)">
+                                @Model.PaymentStatus
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-6">Payment Method:</dt>
+                        <dd class="col-sm-6">@Model.PaymentMethod</dd>
+
+                        <dt class="col-sm-6">Items Total:</dt>
+                        <dd class="col-sm-6">Rs. @Model.TotalAmount.ToString("N2")</dd>
+
+                        <dt class="col-sm-6">Delivery Fee:</dt>
+                        <dd class="col-sm-6">Rs. 50.00</dd>
+
+                        <hr class="my-2">
+
+                        <dt class="col-sm-6 fw-bold">Total Amount:</dt>
+                        <dd class="col-sm-6 fw-bold text-success">Rs. @((Model.TotalAmount + 50).ToString("N2"))</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Shipping Address</h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-1">@Model.ShippingAddress</p>
+                    <p class="mb-1">@Model.City, @Model.PostalCode</p>
+                    <p class="mb-0">Phone: @Model.PhoneNumber</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetStatusBadgeClass(string status)
+    {
+        return status.ToLower() switch
+        {
+            "pending" => "bg-warning",
+            "processing" => "bg-info",
+            "shipped" => "bg-primary",
+            "delivered" => "bg-success",
+            "cancelled" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+
+    public string GetPaymentBadgeClass(string status)
+    {
+        return status.ToLower() switch
+        {
+            "completed" => "bg-success",
+            "pending" => "bg-warning",
+            "failed" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}

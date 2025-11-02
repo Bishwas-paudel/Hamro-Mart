@@ -1,0 +1,195 @@
+﻿/* Admin Dashboard Styles */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fc;
+}
+
+#wrapper {
+    display: flex;
+}
+
+#content-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #4e73df 0%, #224abe 100%);
+}
+
+    .sidebar .sidebar-brand {
+        height: 70px;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 800;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        z-index: 1;
+    }
+
+        .sidebar .sidebar-brand .sidebar-brand-icon {
+            font-size: 1.5rem;
+        }
+
+    .sidebar .nav-item {
+        position: relative;
+    }
+
+        .sidebar .nav-item .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+            .sidebar .nav-item .nav-link i {
+                font-size: 0.85rem;
+                margin-right: 0.25rem;
+                width: 20px;
+                text-align: center;
+            }
+
+            .sidebar .nav-item .nav-link:hover {
+                color: #fff;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+        .sidebar .nav-item.active .nav-link {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+    .sidebar .sidebar-heading {
+        text-align: left;
+        padding: 0 1rem;
+        font-weight: 800;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+    }
+
+.sidebar-divider {
+    margin: 0 1rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Topbar */
+.topbar {
+    height: 70px;
+}
+
+    .topbar .navbar-nav .nav-item .nav-link {
+        height: 4.375rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.75rem;
+    }
+
+    .topbar .dropdown .dropdown-menu {
+        width: 200px;
+    }
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+    .card .card-header {
+        background-color: #f8f9fc;
+        border-bottom: 1px solid #e3e6f0;
+    }
+
+.border-left-primary {
+    border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+    border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+    border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+    border-left: 0.25rem solid #f6c23e !important;
+}
+
+.border-left-danger {
+    border-left: 0.25rem solid #e74a3b !important;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #858796;
+}
+
+    .table th {
+        border-top: none;
+        font-weight: 700;
+        color: #4e73df;
+    }
+
+/* Badges */
+.badge {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        min-height: auto;
+    }
+
+    #wrapper {
+        flex-direction: column;
+    }
+
+    #content-wrapper {
+        width: 100%;
+    }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align: center;
+    color: #fff;
+    background: rgba(78, 115, 223, 0.5);
+    line-height: 46px;
+}
+
+    .scroll-to-top:focus,
+    .scroll-to-top:hover {
+        color: white;
+        background: #4e73df;
+    }
+
+    .scroll-to-top:hover {
+        background: #4e73df;
+    }
+
+/* Footer */
+.sticky-footer {
+    flex-shrink: 0;
+}
