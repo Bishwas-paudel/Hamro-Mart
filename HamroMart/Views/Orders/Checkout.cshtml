@@ -158,11 +158,83 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 
+    <script src="https://khalti.com/static/khalti-checkout.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#checkout-form').on('submit', function() {
-                // Show loading state
+        $(document).ready(function () {
+
+            // Create Khalti config
+            const khaltiConfig = {
+                "publicKey": "@ViewBag.KhaltiPublicKey",
+                "productIdentity": "HamroMartOrder",
+                "productName": "HamroMart Purchase",
+                "productUrl": "https://hamromart.com",
+                "eventHandler": {
+                    onSuccess(payload) {
+                        console.log("✅ Khalti Payment Success:", payload);
+
+                        // Verify with your server
+                        $.post('@Url.Action("ProcessKhalti", "Payment")', {
+                            khaltiToken: payload.token,
+                            amount: payload.amount,
+                            orderId: payload.product_identity
+                        }).done(function (res) {
+                            if (res.success) {
+                                window.location.href = '@Url.Action("Success", "Payment")' + '?orderId=' + res.orderId;
+                            } else {
+                                alert("Payment verification failed: " + res.message);
+                                window.location.href = '@Url.Action("Failed", "Payment")';
+                            }
+                        }).fail(function (xhr, status, error) {
+                            console.error(error);
+                            alert("Error verifying payment.");
+                            window.location.href = '@Url.Action("Failed", "Payment")';
+                        });
+                    },
+                    onError(error) {
+                        console.error("❌ Khalti Error:", error);
+                        alert("Payment failed: " + error.message);
+                    },
+                    onClose() {
+                        console.log("🔒 Khalti widget closed");
+                        $('button[type="submit"]').html('<i class="fas fa-lock me-2"></i>Place Order').prop('disabled', false);
+                    }
+                }
+            };
+
+            const khaltiCheckout = new KhaltiCheckout(khaltiConfig);
+
+            // Handle checkout form submit
+            $('#checkout-form').on('submit', function (e) {
+                e.preventDefault();
+
+                const paymentMethod = $('input[name="PaymentMethod"]:checked').val();
+                const totalAmount = @((int)((totalAmount + 50) * 100)); // convert to paisa
+
                 $('button[type="submit"]').html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...').prop('disabled', true);
+
+                if (paymentMethod === "Khalti") {
+                    // Send checkout data to server (create order)
+                    $.ajax({
+                        url: '@Url.Action("Checkout", "Orders")',
+                        method: 'POST',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            if (response.success) {
+                                khaltiCheckout.show({ amount: totalAmount });
+                            } else {
+                                alert("Checkout failed: " + (response.message || "Please try again."));
+                                $('button[type="submit"]').html('<i class="fas fa-lock me-2"></i>Place Order').prop('disabled', false);
+                            }
+                        },
+                        error: function () {
+                            alert("Error creating order. Please try again.");
+                            $('button[type="submit"]').html('<i class="fas fa-lock me-2"></i>Place Order').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    // Normal cash on delivery or others
+                    this.submit();
+                }
             });
         });
     </script>

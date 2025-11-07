@@ -2,24 +2,27 @@
 
 namespace HamroMart.ViewModels
 {
+
     public class CheckoutViewModel
     {
         [Required]
-        [StringLength(200)]
+        [Display(Name = "Shipping Address")]
         public string ShippingAddress { get; set; }
 
         [Required]
-        [StringLength(100)]
         public string City { get; set; }
 
-        [StringLength(10)]
+        [Required]
+        [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
 
         [Required]
+        [Display(Name = "Phone Number")]
         [Phone]
         public string PhoneNumber { get; set; }
 
         [Required]
-        public string PaymentMethod { get; set; } = "CashOnDelivery";
+        [Display(Name = "Payment Method")]
+        public string PaymentMethod { get; set; }
     }
 }

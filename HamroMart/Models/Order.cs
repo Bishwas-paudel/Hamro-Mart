@@ -7,37 +7,33 @@ namespace HamroMart.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string OrderNumber { get; set; } = Guid.NewGuid().ToString().Substring(0, 10).ToUpper();
+        [Required, StringLength(50)]
+        public string OrderNumber { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 10).ToUpper();
 
         [Required]
         public string UserId { get; set; }
 
-        [Required]
-        [StringLength(200)]
+        [Required, StringLength(200)]
         public string ShippingAddress { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required, StringLength(100)]
         public string City { get; set; }
 
         [StringLength(10)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required, StringLength(20)]
         public string PhoneNumber { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalAmount { get; set; }
 
+        // Enums with defaults
         public PaymentMethod PaymentMethod { get; set; } = PaymentMethod.CashOnDelivery;
-
         public PaymentStatus PaymentStatus { get; set; } = PaymentStatus.Pending;
-
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
+        // Dates
         public DateTime OrderDate { get; set; } = DateTime.Now;
         public DateTime? ShippedDate { get; set; }
         public DateTime? DeliveredDate { get; set; }

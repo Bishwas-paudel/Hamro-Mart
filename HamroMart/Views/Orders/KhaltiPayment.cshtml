@@ -20,18 +20,18 @@
 
                     <form id="khaltiPaymentForm">
                         <input type="hidden" id="orderId" value="@Model.Id" />
-                        
+
                         <div class="mb-3">
                             <label for="mobile" class="form-label">Mobile Number</label>
-                            <input type="text" class="form-control" id="mobile" 
-                                   placeholder="98XXXXXXXX" required 
+                            <input type="text" class="form-control" id="mobile"
+                                   placeholder="98XXXXXXXX" required
                                    pattern="98[0-9]{8}" title="Enter a valid Nepal mobile number (98XXXXXXXX)">
                             <small class="form-text text-muted">Enter your Khalti registered mobile number</small>
                         </div>
 
                         <div class="mb-3">
                             <label for="pin" class="form-label">Khalti MPIN</label>
-                            <input type="password" class="form-control" id="pin" 
+                            <input type="password" class="form-control" id="pin"
                                    placeholder="Enter your Khalti MPIN" required>
                         </div>
 
@@ -47,6 +47,12 @@
                             <i class="fas fa-shield-alt me-1"></i>Secure payment powered by Khalti
                         </small>
                     </div>
+
+                    <div class="text-center mt-3">
+                        <a href="@Url.Action("Details", "Orders", new { id = Model.Id })" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Order Details
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,50 +61,58 @@
 
 @section Scripts {
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
-    
+
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var config = {
-                "publicKey": "3b93f73e8c874501bce556f8963cc554",
+                "publicKey": "@ViewBag.KhaltiPublicKey",
                 "productIdentity": "@Model.OrderNumber",
-                "productName": "HamroMart Order",
+                "productName": "HamroMart Order #@Model.OrderNumber",
                 "productUrl": "https://hamromart.com",
+                "amount": @((int)(totalAmount * 100)), // Convert to paisa
                 "eventHandler": {
                     onSuccess(payload) {
-                        console.log(payload);
+                        console.log("Payment successful:", payload);
+
+                        // Show loading
+                        $('#payWithKhalti').html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...').prop('disabled', true);
+
                         // Verify payment with our server
                         $.post('@Url.Action("ProcessKhalti", "Payment")', {
                             orderId: $('#orderId').val(),
                             khaltiToken: payload.token,
-                            mobile: $('#mobile').val()
-                        })
-                        .done(function(response) {
-                            if (response.success) {
-                                window.location.href = '@Url.Action("Success", "Payment")' + '?orderId=' + response.orderId;
-                            } else {
-                                alert('Payment failed: ' + response.message);
+                            mobile: $('#mobile').val(),
+                            amount: @totalAmount
+                                })
+                            .done(function (response) {
+                                if (response.success) {
+                                    window.location.href = '@Url.Action("Success", "Payment")' + '?orderId=' + response.orderId;
+                                } else {
+                                    alert('Payment verification failed: ' + response.message);
+                                    window.location.href = '@Url.Action("Failed", "Payment")' + '?orderId=' + $('#orderId').val();
+                                }
+                            })
+                            .fail(function (xhr, status, error) {
+                                console.error('Payment verification error:', error);
+                                alert('Error processing payment. Please contact support.');
                                 window.location.href = '@Url.Action("Failed", "Payment")' + '?orderId=' + $('#orderId').val();
-                            }
-                        })
-                        .fail(function() {
-                            alert('Error processing payment. Please contact support.');
-                            window.location.href = '@Url.Action("Failed", "Payment")' + '?orderId=' + $('#orderId').val();
-                        });
+                            });
                     },
                     onError(error) {
-                        console.log(error);
+                        console.log("Payment error:", error);
                         alert('Payment failed: ' + error.message);
                         window.location.href = '@Url.Action("Failed", "Payment")' + '?orderId=' + $('#orderId').val();
                     },
                     onClose() {
-                        console.log('Widget is closing');
+                        console.log('Payment widget closed');
+                        $('#payWithKhalti').html('<i class="fas fa-lock me-2"></i>Pay Rs. @totalAmount.ToString("N2") with Khalti').prop('disabled', false);
                     }
                 }
             };
 
             var checkout = new KhaltiCheckout(config);
 
-            $('#payWithKhalti').click(function() {
+            $('#payWithKhalti').click(function () {
                 const mobile = $('#mobile').val();
                 const pin = $('#pin').val();
 
@@ -113,18 +127,21 @@
                 }
 
                 // Show loading
-                $(this).html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...').prop('disabled', true);
+                $(this).html('<i class="fas fa-spinner fa-spin me-2"></i>Initializing...').prop('disabled', true);
 
-                // Launch Khalti Checkout
-                checkout.show({
-                    amount: @((totalAmount * 100)) // Amount in paisa (1 Rs = 100 paisa)
-                        });
+                // Initialize Khalti payment
+                try {
+                    checkout.show({ amount: @((int)(totalAmount * 100)) });
+                } catch (error) {
+                    console.error('Khalti checkout error:', error);
+                    alert('Error initializing payment. Please try again.');
+                    $(this).html('<i class="fas fa-lock me-2"></i>Pay Rs. @totalAmount.ToString("N2") with Khalti').prop('disabled', false);
+                }
+            });
 
-                // Re-enable button after short delay (in case widget is closed)
-                setTimeout(() => {
-                    $('#payWithKhalti').html('<i class="fas fa-lock me-2"></i>Pay Rs. @totalAmount.ToString("N2") with Khalti')
-                        .prop('disabled', false);
-                }, 5000);
+            // Re-enable button if user closes without completing
+            $('#mobile, #pin').on('input', function () {
+                $('#payWithKhalti').prop('disabled', false);
             });
         });
     </script>

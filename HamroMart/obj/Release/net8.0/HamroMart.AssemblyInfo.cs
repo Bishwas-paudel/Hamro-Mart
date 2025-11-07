@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HamroMart")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52661cd7917a97bfdd1c3ddb8415e0ef907772e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce6948c721cfc77093371a61e709f9fc13b563df")]
 [assembly: System.Reflection.AssemblyProductAttribute("HamroMart")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HamroMart")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using HamroMart.Data;
 using HamroMart.Models;
+using HamroMart.Services;
 using HamroMart.ViewModels;
 
 namespace HamroMart.Controllers
@@ -14,12 +16,18 @@ namespace HamroMart.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<OrdersController> _logger;
+        private readonly KhaltiSettings _khaltiSettings;
 
-        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ILogger<OrdersController> logger)
+        public OrdersController(
+            ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager,
+            ILogger<OrdersController> logger,
+            IOptions<KhaltiSettings> khaltiSettings)
         {
             _context = context;
             _userManager = userManager;
             _logger = logger;
+            _khaltiSettings = khaltiSettings.Value;
         }
 
         // GET: Orders
@@ -124,8 +132,44 @@ namespace HamroMart.Controllers
 
             ViewBag.CartItems = cartItems;
             ViewBag.TotalAmount = cartItems.Sum(ci => ci.Quantity * (ci.Product.DiscountPrice ?? ci.Product.Price));
+            ViewBag.KhaltiPublicKey = _khaltiSettings.LivePublicKey;
 
             return View(viewModel);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> ProcessKhalti(string khaltiToken, int amount, string orderId)
+        {
+            var order = await _context.Orders.FirstOrDefaultAsync(o => o.OrderNumber == orderId);
+            if (order == null)
+                return Json(new { success = false, message = "Order not found." });
+
+            using var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", $"Key {_khaltiSettings.LiveSecretKey}");
+
+            var values = new Dictionary<string, string>
+    {
+        { "token", khaltiToken },
+        { "amount", amount.ToString() }
+    };
+
+            var content = new FormUrlEncodedContent(values);
+            var response = await client.PostAsync("https://test-pay.khalti.com//payment/verify/", content);
+            var result = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                order.PaymentStatus = PaymentStatus.Completed;
+                order.OrderStatus = OrderStatus.Processing;
+                _context.Update(order);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true, orderId = order.Id });
+            }
+
+            return Json(new { success = false, message = "Khalti verification failed." });
         }
 
         // POST: Orders/Create (Checkout)
@@ -154,6 +198,7 @@ namespace HamroMart.Controllers
                     var order = new Order
                     {
                         UserId = userId,
+                        OrderNumber = GenerateOrderNumber(),
                         ShippingAddress = model.ShippingAddress,
                         City = model.City,
                         PostalCode = model.PostalCode,
@@ -192,8 +237,16 @@ namespace HamroMart.Controllers
                     if (model.PaymentMethod == "CashOnDelivery")
                     {
                         order.PaymentStatus = PaymentStatus.Completed;
+                        order.OrderStatus = OrderStatus.Processing;
                         _context.Update(order);
                         await _context.SaveChangesAsync();
+
+                        TempData["SuccessMessage"] = $"Order placed successfully! Your order number is: {order.OrderNumber}";
+                        return RedirectToAction("Details", new { id = order.Id });
+                    }
+                    else if (model.PaymentMethod == "Khalti")
+                    {
+                        return Json(new { success = true, orderId = order.Id, orderNumber = order.OrderNumber });
                     }
 
                     TempData["SuccessMessage"] = $"Order placed successfully! Your order number is: {order.OrderNumber}";
@@ -202,6 +255,7 @@ namespace HamroMart.Controllers
 
                 ViewBag.CartItems = cartItems;
                 ViewBag.TotalAmount = cartItems.Sum(ci => ci.Quantity * (ci.Product.DiscountPrice ?? ci.Product.Price));
+                ViewBag.KhaltiPublicKey = _khaltiSettings.LivePublicKey;
                 return View(model);
             }
             catch (Exception ex)
@@ -210,6 +264,28 @@ namespace HamroMart.Controllers
                 TempData["ErrorMessage"] = "An error occurred during checkout. Please try again.";
                 return RedirectToAction("Index", "Cart");
             }
+        }
+
+        // GET: Orders/KhaltiPayment/5
+        public async Task<IActionResult> KhaltiPayment(int id)
+        {
+            var userId = _userManager.GetUserId(User);
+            var order = await _context.Orders
+                .FirstOrDefaultAsync(o => o.Id == id && o.UserId == userId);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            if (order.PaymentStatus != PaymentStatus.Pending)
+            {
+                TempData["ErrorMessage"] = "Payment has already been processed for this order.";
+                return RedirectToAction("Details", new { id });
+            }
+
+            ViewBag.KhaltiPublicKey = _khaltiSettings.LivePublicKey;
+            return View(order);
         }
 
         // POST: Orders/Cancel/5
@@ -255,6 +331,11 @@ namespace HamroMart.Controllers
                 TempData["ErrorMessage"] = "Error cancelling order.";
                 return RedirectToAction("Details", new { id });
             }
+        }
+
+        private string GenerateOrderNumber()
+        {
+            return "ORD" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
     }
 }
