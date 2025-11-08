@@ -20,9 +20,9 @@ namespace HamroMart.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        [MinLength(6, ErrorMessage = "Password must be at least 6 characters long")]
+        [StringLength(100, MinimumLength = 6)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$",
+            ErrorMessage = "Password must be at least 6 characters and include uppercase, lowercase, and a digit.")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]

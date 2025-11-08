@@ -67,14 +67,11 @@
 
     <script>
         $(document).ready(function() {
-            // Auto-tab between OTP digits
             $('input[placeholder="000000"]').on('input', function() {
                 if (this.value.length === 6) {
                     $('#otpForm').submit();
                 }
             });
-
-            // Resend OTP functionality
             $('#resendOtp').click(function() {
                 const button = $(this);
                 const email = '@Model.Email';
@@ -97,7 +94,7 @@
                         setTimeout(() => {
                             button.prop('disabled', false);
                             button.html('<i class="fas fa-redo me-2"></i>Resend OTP');
-                        }, 30000); // Enable after 30 seconds
+                        }, 30000); 
                     });
             });
 

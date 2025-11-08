@@ -115,15 +115,12 @@ namespace HamroMart.Controllers
             {
                 Email = TempData["OTPEmail"].ToString()
             };
-
-            // Restore TempData
             TempData.Keep("OTPEmail");
             TempData.Keep("RegistrationData");
 
             return View(model);
         }
 
-        // POST: /Account/VerifyOTP
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> VerifyOTP(VerifyOTPViewModel model)
@@ -136,8 +133,8 @@ namespace HamroMart.Controllers
                     return RedirectToAction("Register");
                 }
 
-                if (ModelState.IsValid)
-                {
+                //if (ModelState.IsValid)
+                //{
                     // Verify OTP
                     var otpVerification = await _context.OTPVerifications
                         .Where(o => o.Email == model.Email && o.OTP == model.OTP && !o.IsUsed)
@@ -199,7 +196,7 @@ namespace HamroMart.Controllers
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
-                }
+              //  }
 
                 // Restore TempData if validation fails
                 TempData.Keep("OTPEmail");

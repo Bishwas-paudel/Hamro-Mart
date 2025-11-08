@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using HamroMart.Data;
 using HamroMart.Models;
-
 namespace HamroMart
 {
     public static class DbInitializer
@@ -23,7 +22,6 @@ namespace HamroMart
                     await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
-
             // Create admin user
             var adminUser = await userManager.FindByEmailAsync("admin@hamromart.com");
             if (adminUser == null)
@@ -39,15 +37,12 @@ namespace HamroMart
                     PostalCode = "44600",
                     EmailConfirmed = true
                 };
-
                 var createPowerUser = await userManager.CreateAsync(user, "Admin@123");
                 if (createPowerUser.Succeeded)
                 {
                     await userManager.AddToRoleAsync(user, "Admin");
                 }
             }
-
-            
         }
     }
 }
